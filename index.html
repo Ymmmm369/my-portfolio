@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Video Background Engine */
+        /* Video Background Engine - Filters Removed for Clarity */
         #scroll-video {
             position: fixed;
             top: 0;
@@ -34,9 +34,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -2;
-            opacity: 0.6;
-            filter: grayscale(100%);
-            /* Blends the white background of the video with the #f9f8f4 page color */
+            opacity: 0.8;
             mix-blend-mode: multiply; 
         }
 
@@ -88,11 +86,15 @@
             margin-top: 20px;
         }
 
-        /* Sections */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 50px 100px; }
+        /* Sections - Spaced out for "More Frame" scroll length */
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 50px 30vh; /* Extra space at the bottom */
+        }
 
         section {
-            margin-top: 100px;
+            margin-top: 40vh; /* More "scroll runway" between sections */
             padding: 80px;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -135,7 +137,7 @@
         .timeline-org { font-weight: 600; font-size: 1rem; margin-bottom: 10px; }
 
         /* Contact */
-        .contact-box { text-align: center; border: none; background: transparent; backdrop-filter: none; }
+        .contact-box { text-align: center; border: none; background: transparent; backdrop-filter: none; margin-top: 20vh; }
         .contact-link {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
@@ -150,7 +152,7 @@
         @media (max-width: 850px) {
             .project-item, .timeline-grid { grid-template-columns: 1fr; gap: 20px; }
             .container { padding: 0 20px; }
-            section { padding: 40px 20px; }
+            section { padding: 40px 20px; margin-top: 20vh; }
             .profile-nav { position: absolute; left: 20px; top: 20px; }
             .profile-pic { width: 90px; height: 90px; }
         }
@@ -263,17 +265,32 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        /* Scroll Video Engine */
+        /* SMOOTH SCRUB ENGINE */
+        let targetTime = 0;
+        let currentTime = 0;
+        const smoothing = 0.08; // Adjust between 0.01 (very slow) and 0.1 (snappier)
+
         window.addEventListener('scroll', () => {
             if(video.readyState >= 2) {
                 const scrollPos = window.scrollY;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
                 const scrollFrac = scrollPos / maxScroll;
-                window.requestAnimationFrame(() => {
-                    video.currentTime = video.duration * scrollFrac;
-                });
+                targetTime = video.duration * scrollFrac;
             }
         });
+
+        function renderLoop() {
+            // LERP formula: current + (target - current) * factor
+            currentTime += (targetTime - currentTime) * smoothing;
+            
+            if (Math.abs(targetTime - currentTime) > 0.001) {
+                video.currentTime = currentTime;
+            }
+            
+            requestAnimationFrame(renderLoop);
+        }
+
+        renderLoop();
     </script>
 </body>
 </html>
