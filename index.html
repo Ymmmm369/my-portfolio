@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f9f8f4; /* High-end Bone/Off-white */
-            --text-primary: #1a1a1a; /* Charcoal */
+            --bg: #f9f8f4; 
+            --text-primary: #1a1a1a; 
             --text-secondary: #555;
             --border: rgba(229, 229, 225, 0.8);
             --glass-bg: rgba(249, 248, 244, 0.85);
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Video Background Engine - Filters Removed for Clarity */
+        /* 1. CLEAN VIDEO BACKGROUND */
         #scroll-video {
             position: fixed;
             top: 0;
@@ -34,8 +34,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -2;
-            opacity: 0.8;
-            mix-blend-mode: multiply; 
+            opacity: 1; /* Full clarity now that color is matched */
         }
 
         /* Profile Image */
@@ -86,15 +85,15 @@
             margin-top: 20px;
         }
 
-        /* Sections - Spaced out for "More Frame" scroll length */
+        /* 2. ADDING SCROLL RUNWAY */
         .container { 
             max-width: 1100px; 
             margin: 0 auto; 
-            padding: 0 50px 30vh; /* Extra space at the bottom */
+            padding: 0 50px 50vh; /* Massive padding at bottom to let video finish */
         }
 
         section {
-            margin-top: 40vh; /* More "scroll runway" between sections */
+            margin-top: 50vh; /* Spacing out sections so gears have time to turn */
             padding: 80px;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -115,7 +114,6 @@
             padding-bottom: 20px;
         }
 
-        /* Projects Layout */
         .project-item {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -125,18 +123,15 @@
         }
 
         .project-item:last-child { border-bottom: none; }
-
         .project-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; }
         .project-desc { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); }
 
-        /* Timeline */
         .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .timeline-item { margin-bottom: 50px; }
         .timeline-date { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
         .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 10px 0 5px 0; }
         .timeline-org { font-weight: 600; font-size: 1rem; margin-bottom: 10px; }
 
-        /* Contact */
         .contact-box { text-align: center; border: none; background: transparent; backdrop-filter: none; margin-top: 20vh; }
         .contact-link {
             font-family: 'Playfair Display', serif;
@@ -152,8 +147,7 @@
         @media (max-width: 850px) {
             .project-item, .timeline-grid { grid-template-columns: 1fr; gap: 20px; }
             .container { padding: 0 20px; }
-            section { padding: 40px 20px; margin-top: 20vh; }
-            .profile-nav { position: absolute; left: 20px; top: 20px; }
+            section { padding: 40px 20px; margin-top: 30vh; }
             .profile-pic { width: 90px; height: 90px; }
         }
     </style>
@@ -161,7 +155,7 @@
 <body>
 
     <video id="scroll-video" preload="auto" muted playsinline>
-        <source src="gears_vid_2.mp4" type="video/mp4">
+        <source src="gears.mp4" type="video/mp4">
     </video>
 
     <div class="profile-nav">
@@ -178,31 +172,27 @@
         <section id="about">
             <h2>The Approach</h2>
             <p style="font-size: 1.2rem; line-height: 2; color: var(--text-secondary);">
-                [cite_start]Merging the precision of Physics with the fluidity of modern Web Architecture[cite: 8, 14]. 
+                Merging the precision of Physics with the fluidity of modern Web Architecture[cite: 8, 14]. 
                 I build digital solutions that prioritize clarity, performance, and sophisticated 
-                [cite_start]intelligence[cite: 7]. As a specialist in both Big Data and AI, I bridge the gap 
-                [cite_start]between complex data systems and intuitive user interfaces[cite: 8, 20].
+                intelligence[cite: 7]. As a specialist in both Big Data and AI, I bridge the gap 
+                between complex data systems and intuitive user interfaces[cite: 8, 20].
             </p>
         </section>
 
         <section id="projects">
             <h2>Selected Works</h2>
-            
             <div class="project-item">
                 <h3 class="project-title">Digital Brand Ecosystem</h3>
                 <p class="project-desc">Designed and developed a full-stack platform (www.chadturtle.com) featuring bespoke UI/UX layouts and custom asset generation.</p>
             </div>
-
             <div class="project-item">
                 <h3 class="project-title">Municipal Workflow Systems</h3>
                 <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing.</p>
             </div>
-
             <div class="project-item">
                 <h3 class="project-title">AI Audio Authentication</h3>
                 <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
             </div>
-
             <div class="project-item">
                 <h3 class="project-title">Edge Vision Intelligence</h3>
                 <p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform.</p>
@@ -222,22 +212,22 @@
                     <div class="timeline-item">
                         <span class="timeline-date">2023 — 2024</span>
                         <h3 class="timeline-title">Data Analyst</h3>
-                        [cite_start]<div class="timeline-org">Narmada AQUA Solutions [cite: 18]</div>
-                        [cite_start]<p class="project-desc">Managed high-volume business records and resolved operational inefficiencies through data analytics[cite: 19, 23].</p>
+                        <div class="timeline-org">Narmada AQUA Solutions [cite: 18]</div>
+                        <p class="project-desc">Managed high-volume business records and resolved operational inefficiencies through data analytics[cite: 19, 23].</p>
                     </div>
                 </div>
                 <div>
                     <div class="timeline-item">
                         <span class="timeline-date">2025</span>
                         <h3 class="timeline-title">Big Data & AI</h3>
-                        [cite_start]<div class="timeline-org">Georgian College [cite: 11]</div>
-                        [cite_start]<p class="project-desc">Graduated with Distinction and Dean's List honors in Big Data Analytics[cite: 12]. [cite_start]Currently specializing in Artificial Intelligence[cite: 20].</p>
+                        <div class="timeline-org">Georgian College </div>
+                        <p class="project-desc">Graduated with Distinction and Dean's List honors in Big Data Analytics[cite: 12]. Currently specializing in Artificial Intelligence[cite: 21].</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-date">2023</span>
                         <h3 class="timeline-title">B.Sc. Physics (Hons.)</h3>
-                        [cite_start]<div class="timeline-org">Chandigarh University [cite: 13]</div>
-                        [cite_start]<p class="project-desc">Graduated with Distinction[cite: 15]. [cite_start]Astrophysics research intern at IIT Bhubaneswar[cite: 16].</p>
+                        <div class="timeline-org">Chandigarh University [cite: 13]</div>
+                        <p class="project-desc">Graduated with Distinction[cite: 15]. Astrophysics research intern at IIT Bhubaneswar[cite: 16].</p>
                     </div>
                 </div>
             </div>
@@ -259,31 +249,32 @@
         const video = document.getElementById('scroll-video');
         video.pause();
 
-        /* Section Fade-in Observer */
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        /* SMOOTH SCRUB ENGINE */
+        // 3. OPTIMIZED SMOOTH SCRUB ENGINE
         let targetTime = 0;
         let currentTime = 0;
-        const smoothing = 0.08; // Adjust between 0.01 (very slow) and 0.1 (snappier)
+        const smoothing = 0.12; // Increased for slightly more responsive movement
 
         window.addEventListener('scroll', () => {
             if(video.readyState >= 2) {
                 const scrollPos = window.scrollY;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollFrac = scrollPos / maxScroll;
+                // Clamp fraction between 0 and 1
+                const scrollFrac = Math.max(0, Math.min(1, scrollPos / maxScroll));
                 targetTime = video.duration * scrollFrac;
             }
         });
 
         function renderLoop() {
-            // LERP formula: current + (target - current) * factor
+            // Smooth movement: current + (diff * factor)
             currentTime += (targetTime - currentTime) * smoothing;
             
-            if (Math.abs(targetTime - currentTime) > 0.001) {
+            // Only update frame if the difference is meaningful to save performance
+            if (Math.abs(targetTime - currentTime) > 0.0001) {
                 video.currentTime = currentTime;
             }
             
