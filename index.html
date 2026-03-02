@@ -6,93 +6,166 @@
     <title>Yash Mehar | AI & Full-Stack Developer</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --bg: #f8f9fa;
-            --text: #333;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg);
-            color: var(--text);
-        }
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        header h1 {
+            color: var(--text-main);
             margin: 0;
-            font-size: 2.5rem;
+            line-height: 1.6;
         }
+
+        /* Animated Hero Section */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
         header p {
-            font-size: 1.2rem;
-            color: #bdc3c7;
-            margin-top: 10px;
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-top: 1rem;
         }
+
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
+            max-width: 1000px;
+            margin: -50px auto 0;
+            padding: 0 20px 100px;
         }
+
+        section {
+            margin-bottom: 60px;
+        }
+
         h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            margin-top: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        h2::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: #334155;
+        }
+
+        /* Glassmorphism Skills */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 2rem;
+            gap: 12px;
         }
+
         .skill-tag {
-            background-color: var(--secondary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 500;
             font-size: 0.9rem;
+            transition: 0.3s;
         }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Project Cards */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
+
         .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            padding: 30px;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
+
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
+
         .card h3 {
-            margin-top: 0;
-            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
         }
-        .card a {
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn {
             display: inline-block;
-            margin-top: 10px;
-            color: var(--secondary);
+            margin-top: 20px;
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .card a:hover {
-            text-decoration: underline;
+
+        .btn:hover {
+            color: var(--accent);
         }
+
         footer {
             text-align: center;
-            padding: 2rem;
-            background-color: var(--primary);
-            color: white;
-            margin-top: 2rem;
+            padding: 50px;
+            border-top: 1px solid #334155;
+            color: var(--text-dim);
+        }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -100,67 +173,61 @@
 
     <header>
         <h1>Yash Mehar</h1>
-        <p>AI Specialist | Full-Stack Developer | Data Analyst</p>
+        <p>Building intelligent digital solutions through Full-Stack Development, AI, and Data Science.</p>
     </header>
 
     <div class="container">
-        <h2>About Me</h2>
-        <p>Versatile technologist with a background in Physics, Big Data Analytics, and Artificial Intelligence. I specialize in building end-to-end digital solutions, from full-stack website creation and UI/UX design to deploying machine learning models and automated workflows. I leverage data-driven thinking to optimize processes and deliver user-centric applications.</p>
-
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <span class="skill-tag">Full-Stack Web Development</span>
-            <span class="skill-tag">UI/UX & Graphics</span>
-            <span class="skill-tag">Machine Learning & AI Agents</span>
-            <span class="skill-tag">Python & C++</span>
-            <span class="skill-tag">Power BI & SQL</span>
-            <span class="skill-tag">Edge Computing (Jetson)</span>
-        </div>
-
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            
-            <div class="card">
-                <h3>Custom Web Ecosystems</h3>
-                <p>Designed and developed full-stack responsive platforms (including www.chadturtle.com and kites.io). Handled complete UI/UX layout, generated custom graphics, and integrated interactive user features.</p>
-                <p><strong>Tech:</strong> HTML/CSS/JS, UI/UX, Graphic Design</p>
-                <a href="#link-to-repo">View Repository &rarr;</a>
+        <section>
+            <h2>Technical Arsenal</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Full-Stack Development</span>
+                <span class="skill-tag">UI/UX & Graphics</span>
+                <span class="skill-tag">AI Agent Deployment</span>
+                <span class="skill-tag">Python & C++</span>
+                <span class="skill-tag">Edge Computing (NVIDIA Jetson)</span>
+                <span class="skill-tag">Power BI & SQL</span>
             </div>
+        </section>
 
-            <div class="card">
-                <h3>Audio Deepfake Detection</h3>
-                <p>Built and trained a machine learning model designed to accurately identify, analyze, and classify audio deepfakes as part of an advanced AI initiative.</p>
-                <p><strong>Tech:</strong> Python, Machine Learning, Audio Processing</p>
-                <a href="#link-to-repo">View Repository &rarr;</a>
+        <section>
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="card">
+                    <span class="tech-stack">Full-Stack • UI/UX</span>
+                    <h3>Digital Brand Platforms</h3>
+                    <p>End-to-end creation of high-conversion websites. Specializing in responsive design, custom graphic generation, and seamless user experiences.</p>
+                    <a href="#" class="btn">View Architecture &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <span class="tech-stack">Python • AI • Security</span>
+                    <h3>Audio Deepfake Detection</h3>
+                    <p>Machine learning model engineered to analyze spectral features and classify synthetic vs. organic audio patterns.</p>
+                    <a href="#" class="btn">View Source Code &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <span class="tech-stack">Automation • Backend</span>
+                    <h3>Municipal Workflow Systems</h3>
+                    <p>Automated peer review solution designed for the Town of Innisfil's Engineering department to optimize document processing.</p>
+                    <a href="#" class="btn">View Case Study &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <span class="tech-stack">Edge AI • Computer Vision</span>
+                    <h3>Vision Intelligence Systems</h3>
+                    <p>Deployed pose estimation and image segmentation models on NVIDIA Jetson hardware for real-time edge processing.</p>
+                    <a href="#" class="btn">View Repository &rarr;</a>
+                </div>
+
             </div>
-
-            <div class="card">
-                <h3>Municipal Peer Review Automation</h3>
-                <p>Developed an automated workflow solution for the Town of Innisfil's Development Engineering department to streamline complex document review and approval processes.</p>
-                <p><strong>Tech:</strong> Process Automation, Data Management</p>
-                <a href="#link-to-repo">View Repository &rarr;</a>
-            </div>
-
-            <div class="card">
-                <h3>Edge AI & Computer Vision</h3>
-                <p>Implemented robust image classification, image segmentation, and pose estimation workflows locally utilizing the NVIDIA Jetson hardware platform.</p>
-                <p><strong>Tech:</strong> Computer Vision, Edge Computing, Jetson Nano</p>
-                <a href="#link-to-repo">View Repository &rarr;</a>
-            </div>
-
-            <div class="card">
-                <h3>Custom AR Experience Design</h3>
-                <p>Designed, developed, and deployed a custom Augmented Reality (AR) Snapchat lens utilizing Lens Studio for advanced media uploads and interactions.</p>
-                <p><strong>Tech:</strong> Lens Studio, AR Design</p>
-                <a href="#link-to-repo">View Repository &rarr;</a>
-            </div>
-
-        </div>
+        </section>
     </div>
 
     <footer>
-        <p>Based in Barrie, ON | Available for Remote Opportunities</p>
-        <p><a href="mailto:ymehar.grfa3@gmail.com" style="color: #3498db; text-decoration: none;">ymehar.grfa3@gmail.com</a> | <a href="https://github.com/YOUR-GITHUB-USERNAME" style="color: #3498db; text-decoration: none;">GitHub</a></p>
+        <p>&copy; 2026 Yash Mehar • ymehar.grfa3@gmail.com</p>
+        <p>Barrie, ON | Available for Remote Worldwide</p>
     </footer>
 
 </body>
