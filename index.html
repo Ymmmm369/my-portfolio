@@ -3,232 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yash Mehar | AI & Full-Stack Developer</title>
+    <title>Yash Mehar | Digital Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #38bdf8;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
-            --gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            --bg: #f9f8f4; /* Off-white / Bone */
+            --text-primary: #1a1a1a; /* Charcoal */
+            --text-secondary: #555;
+            --accent: #000;
+            --border: #e5e5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg);
-            color: var(--text-main);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Animated Hero Section */
+        /* Top Left Profile Image */
+        .profile-nav {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            z-index: 100;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(100%); /* Keeps the black & white vibe */
+            border: 1px solid var(--border);
+            transition: 0.5s ease;
+        }
+
+        .profile-pic:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        /* Header / Hero */
         header {
-            height: 60vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
             text-align: center;
-            padding: 0 20px;
+            padding: 0 10%;
         }
 
         header h1 {
-            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
             margin: 0;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            text-transform: lowercase;
         }
 
         header p {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin-top: 1rem;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            font-weight: 300;
         }
 
+        /* Content Sections */
         .container {
-            max-width: 1000px;
-            margin: -50px auto 0;
-            padding: 0 20px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px 100px;
         }
 
         section {
-            margin-bottom: 60px;
+            margin-top: 150px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 50px;
         }
 
-        h2::after {
-            content: "";
-            height: 1px;
-            flex-grow: 1;
-            background: #334155;
-        }
-
-        /* Glassmorphism Skills */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill-tag {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .skill-tag:hover {
-            background: var(--accent);
-            color: var(--bg);
-        }
-
-        /* Project Cards */
-        .projects-grid {
+        /* Minimalist Skills */
+        .skills-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
         }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #334155;
-            padding: 30px;
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-
-        .tech-stack {
-            font-size: 0.8rem;
+        .skill-item {
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent);
-            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .skill-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        /* Project Grid - Editorial Style */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 100px 60px;
+        }
+
+        .project-card {
+            text-decoration: none;
+            color: inherit;
             display: block;
         }
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .project-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background-color: #eee;
+            margin-bottom: 25px;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
 
-        .btn:hover {
-            color: var(--accent);
+        .project-card:hover .project-image-placeholder {
+            transform: scale(0.98);
+            background-color: #e2e2e2;
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            font-weight: 400;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0;
         }
 
         footer {
+            padding: 100px 50px;
             text-align: center;
-            padding: 50px;
-            border-top: 1px solid #334155;
-            color: var(--text-dim);
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
         }
 
-        /* Responsive Mobile Adjustments */
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.5rem; }
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; gap: 60px; }
+            .profile-nav { left: 20px; top: 20px; }
+            header h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="profile-nav">
+        <img src="YOUR_IMAGE_URL" alt="Yash Mehar" class="profile-pic">
+    </div>
+
     <header>
-        <h1>Yash Mehar</h1>
-        <p>Building intelligent digital solutions through Full-Stack Development, AI, and Data Science.</p>
+        <h1>yash mehar</h1>
+        <p>Full-Stack • AI • Data Analytics</p>
     </header>
 
     <div class="container">
-        <section>
+        <section id="about">
+            <h2>The Approach</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; line-height: 2;">
+                Merging the precision of Physics with the fluidity of modern Web Architecture. 
+                I build digital solutions that prioritize clarity, performance, and sophisticated 
+                [cite_start]intelligence[cite: 14, 21].
+            </p>
+        </section>
+
+        <section id="arsenal">
             <h2>Technical Arsenal</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Full-Stack Development</span>
-                <span class="skill-tag">UI/UX & Graphics</span>
-                <span class="skill-tag">AI Agent Deployment</span>
-                <span class="skill-tag">Python & C++</span>
-                <span class="skill-tag">Edge Computing (NVIDIA Jetson)</span>
-                <span class="skill-tag">Power BI & SQL</span>
+            <div class="skills-list">
+                [cite_start]<div class="skill-item"><strong>Web & UI</strong>Responsive Design, Graphics, Deployment [cite: 36]</div>
+                [cite_start]<div class="skill-item"><strong>Intelligence</strong>AI Agents, ML Models, Audio Analysis [cite: 21]</div>
+                [cite_start]<div class="skill-item"><strong>Infrastructure</strong>Python, C++, SQL, Power BI [cite: 38]</div>
+                <div class="skill-item"><strong>Edge</strong>NVIDIA Jetson, Computer Vision</div>
             </div>
         </section>
 
-        <section>
-            <h2>Featured Projects</h2>
+        <section id="works">
+            <h2>Selected Works</h2>
             <div class="projects-grid">
                 
-                <div class="card">
-                    <span class="tech-stack">Full-Stack • UI/UX</span>
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
                     <h3>Digital Brand Platforms</h3>
-                    <p>End-to-end creation of high-conversion websites. Specializing in responsive design, custom graphic generation, and seamless user experiences.</p>
-                    <a href="#" class="btn">View Architecture &rarr;</a>
-                </div>
+                    <p>Bespoke full-stack ecosystems focusing on high-conversion UI/UX and custom asset generation.</p>
+                </a>
 
-                <div class="card">
-                    <span class="tech-stack">Python • AI • Security</span>
-                    <h3>Audio Deepfake Detection</h3>
-                    <p>Machine learning model engineered to analyze spectral features and classify synthetic vs. organic audio patterns.</p>
-                    <a href="#" class="btn">View Source Code &rarr;</a>
-                </div>
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Audio Deepfake Analysis</h3>
+                    <p>Machine learning models designed to authenticate and classify synthetic vocal patterns.</p>
+                </a>
 
-                <div class="card">
-                    <span class="tech-stack">Automation • Backend</span>
-                    <h3>Municipal Workflow Systems</h3>
-                    <p>Automated peer review solution designed for the Town of Innisfil's Engineering department to optimize document processing.</p>
-                    <a href="#" class="btn">View Case Study &rarr;</a>
-                </div>
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Municipal Automation</h3>
+                    <p>Operational workflow engineering for the Town of Innisfil Engineering Department.</p>
+                </a>
 
-                <div class="card">
-                    <span class="tech-stack">Edge AI • Computer Vision</span>
-                    <h3>Vision Intelligence Systems</h3>
-                    <p>Deployed pose estimation and image segmentation models on NVIDIA Jetson hardware for real-time edge processing.</p>
-                    <a href="#" class="btn">View Repository &rarr;</a>
-                </div>
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3>Vision Intelligence</h3>
+                    <p>Real-time pose estimation and segmentation deployed on edge hardware.</p>
+                </a>
 
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Yash Mehar • ymehar.grfa3@gmail.com</p>
-        <p>Barrie, ON | Available for Remote Worldwide</p>
+        [cite_start]yash mehar &mdash; barrie, ontario &mdash; ymehar.grfa3@gmail.com [cite: 3, 4]
     </footer>
 
+    <script>
+        // Simple script to fade in sections on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
