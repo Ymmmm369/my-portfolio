@@ -34,10 +34,11 @@
             height: 100vh;
             object-fit: cover;
             z-index: -2;
-            opacity: 1; /* Full clarity now that color is matched */
+            opacity: 1;
+            /* mix-blend-mode removed as per your manual color matching */
         }
 
-        /* Profile Image */
+        [cite_start]/* Profile Image [cite: 1, 2, 4] */
         .profile-nav {
             position: fixed;
             top: 40px;
@@ -85,15 +86,15 @@
             margin-top: 20px;
         }
 
-        /* 2. ADDING SCROLL RUNWAY */
+        /* 2. OPTIMIZED CONTAINER SPACING */
         .container { 
             max-width: 1100px; 
             margin: 0 auto; 
-            padding: 0 50px 50vh; /* Massive padding at bottom to let video finish */
+            padding: 0 50px 30vh; 
         }
 
         section {
-            margin-top: 50vh; /* Spacing out sections so gears have time to turn */
+            margin-top: 45vh; 
             padding: 80px;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
@@ -114,6 +115,7 @@
             padding-bottom: 20px;
         }
 
+        [cite_start]/* Projects Section [cite: 1, 2, 28, 29] */
         .project-item {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -126,6 +128,7 @@
         .project-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; }
         .project-desc { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); }
 
+        [cite_start]/* Experience & Education [cite: 11, 13, 18, 20] */
         .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .timeline-item { margin-bottom: 50px; }
         .timeline-date { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
@@ -147,7 +150,7 @@
         @media (max-width: 850px) {
             .project-item, .timeline-grid { grid-template-columns: 1fr; gap: 20px; }
             .container { padding: 0 20px; }
-            section { padding: 40px 20px; margin-top: 30vh; }
+            section { padding: 40px 20px; margin-top: 25vh; }
             .profile-pic { width: 90px; height: 90px; }
         }
     </style>
@@ -172,10 +175,10 @@
         <section id="about">
             <h2>The Approach</h2>
             <p style="font-size: 1.2rem; line-height: 2; color: var(--text-secondary);">
-                Merging the precision of Physics with the fluidity of modern Web Architecture[cite: 8, 14]. 
+                [cite_start]Merging the precision of Physics with the fluidity of modern Web Architecture[cite: 8, 14]. 
                 I build digital solutions that prioritize clarity, performance, and sophisticated 
-                intelligence[cite: 7]. As a specialist in both Big Data and AI, I bridge the gap 
-                between complex data systems and intuitive user interfaces[cite: 8, 20].
+                [cite_start]intelligence[cite: 7, 8]. As a specialist in both Big Data and AI, I bridge the gap 
+                [cite_start]between complex data systems and intuitive user interfaces[cite: 8, 20].
             </p>
         </section>
 
@@ -183,19 +186,19 @@
             <h2>Selected Works</h2>
             <div class="project-item">
                 <h3 class="project-title">Digital Brand Ecosystem</h3>
-                <p class="project-desc">Designed and developed a full-stack platform (www.chadturtle.com) featuring bespoke UI/UX layouts and custom asset generation.</p>
+                [cite_start]<p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation[cite: 1, 2].</p>
             </div>
             <div class="project-item">
                 <h3 class="project-title">Municipal Workflow Systems</h3>
-                <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing.</p>
+                [cite_start]<p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing[cite: 1].</p>
             </div>
             <div class="project-item">
                 <h3 class="project-title">AI Audio Authentication</h3>
-                <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
+                [cite_start]<p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns[cite: 1].</p>
             </div>
             <div class="project-item">
                 <h3 class="project-title">Edge Vision Intelligence</h3>
-                <p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform.</p>
+                [cite_start]<p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform[cite: 1].</p>
             </div>
         </section>
 
@@ -207,27 +210,27 @@
                         <span class="timeline-date">2025 — Present</span>
                         <h3 class="timeline-title">Freelance Developer</h3>
                         <div class="timeline-org">Remote Operations</div>
-                        <p class="project-desc">Deploying full-stack web platforms and custom AI automation for global clients.</p>
+                        [cite_start]<p class="project-desc">Deploying full-stack web platforms and custom AI automation for global clients[cite: 1, 2].</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-date">2023 — 2024</span>
                         <h3 class="timeline-title">Data Analyst</h3>
-                        <div class="timeline-org">Narmada AQUA Solutions [cite: 18]</div>
-                        <p class="project-desc">Managed high-volume business records and resolved operational inefficiencies through data analytics[cite: 19, 23].</p>
+                        [cite_start]<div class="timeline-org">Narmada AQUA Solutions [cite: 18]</div>
+                        [cite_start]<p class="project-desc">Managed business records and resolved operational inefficiencies through data analytics[cite: 19, 23].</p>
                     </div>
                 </div>
                 <div>
                     <div class="timeline-item">
                         <span class="timeline-date">2025</span>
                         <h3 class="timeline-title">Big Data & AI</h3>
-                        <div class="timeline-org">Georgian College </div>
-                        <p class="project-desc">Graduated with Distinction and Dean's List honors in Big Data Analytics[cite: 12]. Currently specializing in Artificial Intelligence[cite: 21].</p>
+                        [cite_start]<div class="timeline-org">Georgian College [cite: 11]</div>
+                        [cite_start]<p class="project-desc">Graduated with Distinction in Big Data Analytics[cite: 12]. [cite_start]Currently specializing in Artificial Intelligence[cite: 20].</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-date">2023</span>
                         <h3 class="timeline-title">B.Sc. Physics (Hons.)</h3>
-                        <div class="timeline-org">Chandigarh University [cite: 13]</div>
-                        <p class="project-desc">Graduated with Distinction[cite: 15]. Astrophysics research intern at IIT Bhubaneswar[cite: 16].</p>
+                        [cite_start]<div class="timeline-org">Chandigarh University [cite: 13]</div>
+                        [cite_start]<p class="project-desc">Graduated with Distinction[cite: 15]. [cite_start]Astrophysics research intern at IIT Bhubaneswar[cite: 16].</p>
                     </div>
                 </div>
             </div>
@@ -236,7 +239,7 @@
         <section id="contact" class="contact-box">
             <a href="mailto:ymehar.grfa3@gmail.com" class="contact-link">Connect.</a>
             <p style="margin-top: 30px; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">
-                ymehar.grfa3@gmail.com &nbsp; | &nbsp; Barrie, ON
+                ymehar.grfa3@gmail.com &nbsp; | &nbsp; [cite_start]Barrie, ON [cite: 4]
             </p>
         </section>
     </div>
@@ -249,39 +252,36 @@
         const video = document.getElementById('scroll-video');
         video.pause();
 
+        // 1. Intersection Observer for section fades
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // 3. OPTIMIZED SMOOTH SCRUB ENGINE
-        let targetTime = 0;
-        let currentTime = 0;
-        const smoothing = 0.12; // Increased for slightly more responsive movement
-
-        window.addEventListener('scroll', () => {
+        // 2. REAL-TIME VIDEO SCRUB ENGINE
+        // This function forces the video to a specific time immediately
+        const updateVideo = () => {
             if(video.readyState >= 2) {
-                const scrollPos = window.scrollY;
+                const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                // Clamp fraction between 0 and 1
+                
+                // Calculate position fraction
                 const scrollFrac = Math.max(0, Math.min(1, scrollPos / maxScroll));
-                targetTime = video.duration * scrollFrac;
+                
+                // Map to video duration
+                video.currentTime = video.duration * scrollFrac;
             }
+        };
+
+        // 3. EVENT LISTENERS
+        // 'scroll' is triggered every time the mouse wheel or touch moves
+        window.addEventListener('scroll', () => {
+            // Using requestAnimationFrame inside the scroll event for hardware-accelerated rendering
+            window.requestAnimationFrame(updateVideo);
         });
 
-        function renderLoop() {
-            // Smooth movement: current + (diff * factor)
-            currentTime += (targetTime - currentTime) * smoothing;
-            
-            // Only update frame if the difference is meaningful to save performance
-            if (Math.abs(targetTime - currentTime) > 0.0001) {
-                video.currentTime = currentTime;
-            }
-            
-            requestAnimationFrame(renderLoop);
-        }
-
-        renderLoop();
+        // Initialize frame on load
+        window.addEventListener('load', updateVideo);
     </script>
 </body>
 </html>
