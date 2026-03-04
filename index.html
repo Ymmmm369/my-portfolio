@@ -37,9 +37,7 @@
             opacity: 1;
         }
 
-        /* -------------------------------------------
-           HERO SECTION (UNTOUCHED AS REQUESTED)
-           ------------------------------------------- */
+        /* Hero Section */
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -95,9 +93,7 @@
             font-weight: 400;
         }
 
-        /* -------------------------------------------
-           LAYOUT & SECTIONS
-           ------------------------------------------- */
+        /* Layout & Sections */
         .container { 
             max-width: 1100px; 
             margin: 0 auto; 
@@ -127,9 +123,7 @@
             padding-bottom: 25px;
         }
 
-        /* -------------------------------------------
-           PROJECTS: LARGE RECTANGULAR EDITORIAL BOXES
-           ------------------------------------------- */
+        /* Projects: Large Rectangular Editorial Boxes */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -140,12 +134,12 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            group: hover;
+            cursor: pointer; /* Makes it obvious it's clickable */
         }
 
         .project-image-placeholder {
             width: 100%;
-            aspect-ratio: 4/5; /* This creates the tall, elegant rectangular box */
+            aspect-ratio: 4/5; 
             background-color: rgba(26, 26, 26, 0.05);
             border: 1px solid rgba(26, 26, 26, 0.1);
             margin-bottom: 30px;
@@ -173,9 +167,7 @@
             margin: 0;
         }
 
-        /* -------------------------------------------
-           EXPERIENCE & ABOUT ME
-           ------------------------------------------- */
+        /* Experience, About Me & Skills */
         .timeline-grid { display: grid; grid-template-columns: 1fr; gap: 60px; }
         .timeline-item { border-left: 1px solid var(--text-primary); padding-left: 30px; position: relative; }
         .timeline-item::before {
@@ -185,6 +177,42 @@
         .timeline-date { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
         .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 12px 0 8px 0; }
         .timeline-org { font-weight: 600; font-size: 1rem; margin-bottom: 12px; }
+
+        /* The New Skills Section */
+        .skills-container {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .skills-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0 0 30px 0;
+            font-weight: 400;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+        }
 
         /* Contact Section */
         .contact-box { text-align: center; border: none; background: transparent; backdrop-filter: none; margin-top: 25vh; }
@@ -199,18 +227,73 @@
 
         footer { height: 25vh; text-align: center; color: var(--text-secondary); font-size: 0.85rem; letter-spacing: 2px; }
 
+        /* -------------------------------------------
+           MODAL / OVERLAY ENGINE
+           ------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(249, 248, 244, 0.9); /* Translucent bone background */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1; pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            width: 90%; max-width: 800px; max-height: 85vh;
+            overflow-y: auto; padding: 60px;
+            border: 1px solid rgba(26, 26, 26, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            transform: translateY(40px);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 30px;
+            font-size: 2.5rem; line-height: 1;
+            cursor: pointer; color: var(--text-secondary);
+            font-family: 'Inter', sans-serif; font-weight: 300;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover { color: var(--text-primary); transform: scale(1.1); }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 400;
+        }
+        
+        .modal-body-text {
+            font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
         @media (max-width: 850px) {
             .projects-grid { grid-template-columns: 1fr; gap: 60px; }
             .container { padding: 0 25px; }
             section { padding: 50px 30px; margin-top: 30vh; }
             .profile-pic { width: 140px; height: 140px; }
+            .modal-content { padding: 40px 20px; width: 95%; }
         }
     </style>
 </head>
 <body>
 
     <video id="scroll-video" preload="auto" muted playsinline>
-        <source src="gears.mp4" type="video/mp4">
+        <source src="gears_vid_2.mp4" type="video/mp4">
     </video>
 
     <header>
@@ -227,29 +310,29 @@
             <h2>Selected Works</h2>
             <div class="projects-grid">
                 
-                <a href="#" class="project-card">
+                <div class="project-card" data-modal="modal-1">
                     <div class="project-image-placeholder"></div>
                     <h3 class="project-title">Digital Brand Ecosystem</h3>
                     <p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation.</p>
-                </a>
+                </div>
 
-                <a href="#" class="project-card">
+                <div class="project-card" data-modal="modal-2">
                     <div class="project-image-placeholder"></div>
                     <h3 class="project-title">Municipal Workflow Systems</h3>
-                    <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing.</p>
-                </a>
+                    <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department.</p>
+                </div>
 
-                <a href="#" class="project-card">
+                <div class="project-card" data-modal="modal-3">
                     <div class="project-image-placeholder"></div>
                     <h3 class="project-title">AI Audio Authentication</h3>
                     <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
-                </a>
+                </div>
 
-                <a href="#" class="project-card">
+                <div class="project-card" data-modal="modal-4">
                     <div class="project-image-placeholder"></div>
-                    <h3 class="project-title">Edge Vision Intelligence</h3>
-                    <p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform.</p>
-                </a>
+                    <h3 class="project-title">Hivegram Architecture</h3>
+                    <p class="project-desc">Architected a scalable digital platform prioritizing seamless connectivity and dynamic data flow.</p>
+                </div>
 
             </div>
         </section>
@@ -272,6 +355,18 @@
                     <p class="project-desc">Managed business records and resolved operational inefficiencies through data analytics.</p>
                 </div>
 
+            </div>
+
+            <div class="skills-container">
+                <h3 class="skills-title">Core Competencies & Exposure</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Edge Vision Intelligence</span>
+                    <span class="skill-tag">Predictive Machine Learning</span>
+                    <span class="skill-tag">Full-Stack Web Architecture</span>
+                    <span class="skill-tag">Workflow Automation Pipeline</span>
+                    <span class="skill-tag">Advanced UI/UX Synthesis</span>
+                    <span class="skill-tag">Relational Data Systems</span>
+                </div>
             </div>
         </section>
 
@@ -314,7 +409,71 @@
         <p>&copy; 2026 YASH MEHAR</p>
     </footer>
 
+    <div class="modal-overlay" id="modal-1">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Digital Brand Ecosystem</h2>
+            <p class="modal-body-text">
+                Designed and developed a full-stack platform (www.chadturtle.com) tailored for a digital brand launch. 
+                The project involved conceptualizing the entire UI/UX layout from scratch to ensure a frictionless user journey.
+            </p>
+            <p class="modal-body-text">
+                Custom aesthetics and visual assets were generated and integrated directly into the platform, alongside 
+                specialized community-focused features designed to support and scale the platform's initial rollout.
+            </p>
+            <p class="modal-body-text"><strong>Tech Stack:</strong> Frontend Design, Custom Asset Generation, UI/UX Architecture.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-2">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Municipal Workflow Systems</h2>
+            <p class="modal-body-text">
+                Developed a bespoke automated workflow solution engineered specifically for the Town of Innisfil's Development Engineering department.
+            </p>
+            <p class="modal-body-text">
+                The objective was to completely streamline their complex document review and approval pipeline. By analyzing their existing 
+                bottlenecks, the resulting system minimized manual data handling and optimized inter-departmental processing speeds.
+            </p>
+            <p class="modal-body-text"><strong>Tech Stack:</strong> Workflow Automation, Data Architecture, Process Engineering.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-3">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">AI Audio Authentication</h2>
+            <p class="modal-body-text">
+                Built and trained an advanced machine learning classification model designed to accurately identify, analyze, and flag 
+                synthetic audio deepfakes as part of a modern AI security initiative.
+            </p>
+            <p class="modal-body-text">
+                The architecture relies on breaking down audio into deep spectral features, allowing the model to distinguish between 
+                organic vocal patterns and AI-generated anomalies with high confidence.
+            </p>
+            <p class="modal-body-text"><strong>Tech Stack:</strong> Python, Machine Learning, Spectral Audio Analysis, Security Protocols.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-4">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Hivegram Architecture</h2>
+            <p class="modal-body-text">
+                Conceptualized and architected Hivegram, a modern digital platform built around scalable connectivity and dynamic content flow.
+            </p>
+            <p class="modal-body-text">
+                The system was designed to handle concurrent data processes while delivering a fluid, high-end user experience. 
+                Focus was placed on intelligent backend routing and an intuitive front-end interface that prioritizes user engagement.
+            </p>
+            <p class="modal-body-text"><strong>Tech Stack:</strong> Full-Stack Development, Scalable Databases, User-Centric Design.</p>
+        </div>
+    </div>
+
+
     <script>
+        // --- 1. VIDEO ENGINE ---
         const video = document.getElementById('scroll-video');
         video.pause();
 
@@ -325,7 +484,6 @@
 
         let targetScroll = 0;
         let currentScroll = 0;
-        
         const ease = 0.08; 
         const playbackLoops = 4; 
 
@@ -337,18 +495,51 @@
 
         function renderLoop() {
             currentScroll += (targetScroll - currentScroll) * ease;
-
             if(video.readyState >= 2 && video.duration > 0) {
                 let loopedFrac = (currentScroll * playbackLoops) % 1;
-                
                 if (loopedFrac >= 0) {
                     video.currentTime = video.duration * loopedFrac;
                 }
             }
             requestAnimationFrame(renderLoop);
         }
-
         renderLoop();
+
+
+        // --- 2. MODAL OVERLAY LOGIC ---
+        const projectCards = document.querySelectorAll('.project-card');
+        const modals = document.querySelectorAll('.modal-overlay');
+        const closeBtns = document.querySelectorAll('.close-btn');
+
+        // Open Modal
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = card.getAttribute('data-modal');
+                document.getElementById(modalId).classList.add('active');
+                // Lock background scroll when open
+                document.body.style.overflow = 'hidden'; 
+            });
+        });
+
+        // Close Modal via "X" button
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.modal-overlay').classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scroll
+            });
+        });
+
+        // Close Modal by clicking outside the white box
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                // If the user clicked the overlay itself (not the content inside)
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
     </script>
 </body>
 </html>
