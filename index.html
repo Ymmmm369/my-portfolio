@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f9f8f4; /* High-end Bone/Off-white */
-            --text-primary: #1a1a1a; /* Charcoal */
+            --bg: #f9f8f4; 
+            --text-primary: #1a1a1a; 
             --text-secondary: #555;
             --border: rgba(229, 229, 225, 0.8);
             --glass-bg: rgba(249, 248, 244, 0.85);
@@ -37,7 +37,9 @@
             opacity: 1;
         }
 
-        /* Centered Profile Section */
+        /* -------------------------------------------
+           HERO SECTION (UNTOUCHED AS REQUESTED)
+           ------------------------------------------- */
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -70,7 +72,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Typography */
         header {
             text-align: center;
             padding-bottom: 25vh;
@@ -94,7 +95,9 @@
             font-weight: 400;
         }
 
-        /* Sections & Spacing */
+        /* -------------------------------------------
+           LAYOUT & SECTIONS
+           ------------------------------------------- */
         .container { 
             max-width: 1100px; 
             margin: 0 auto; 
@@ -124,23 +127,63 @@
             padding-bottom: 25px;
         }
 
-        /* Content Layouts */
-        .project-item {
+        /* -------------------------------------------
+           PROJECTS: LARGE RECTANGULAR EDITORIAL BOXES
+           ------------------------------------------- */
+        .projects-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 60px;
-            padding: 50px 0;
-            border-bottom: 1px solid var(--border);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px 50px;
         }
 
-        .project-item:last-child { border-bottom: none; }
-        .project-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; margin: 0; }
-        .project-desc { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); }
+        .project-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            group: hover;
+        }
 
-        .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-        .timeline-item { margin-bottom: 60px; }
+        .project-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5; /* This creates the tall, elegant rectangular box */
+            background-color: rgba(26, 26, 26, 0.05);
+            border: 1px solid rgba(26, 26, 26, 0.1);
+            margin-bottom: 30px;
+            transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card:hover .project-image-placeholder {
+            transform: scale(0.98);
+            background-color: rgba(26, 26, 26, 0.1);
+        }
+
+        .project-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8rem; 
+            margin: 0 0 15px 0; 
+            font-weight: 400;
+        }
+
+        .project-desc { 
+            font-size: 1rem; 
+            line-height: 1.8; 
+            color: var(--text-secondary); 
+            margin: 0;
+        }
+
+        /* -------------------------------------------
+           EXPERIENCE & ABOUT ME
+           ------------------------------------------- */
+        .timeline-grid { display: grid; grid-template-columns: 1fr; gap: 60px; }
+        .timeline-item { border-left: 1px solid var(--text-primary); padding-left: 30px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -4px; top: 5px; width: 7px; height: 7px;
+            background: var(--text-primary); border-radius: 50%;
+        }
         .timeline-date { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
-        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 12px 0 8px 0; }
+        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 12px 0 8px 0; }
         .timeline-org { font-weight: 600; font-size: 1rem; margin-bottom: 12px; }
 
         /* Contact Section */
@@ -157,7 +200,7 @@
         footer { height: 25vh; text-align: center; color: var(--text-secondary); font-size: 0.85rem; letter-spacing: 2px; }
 
         @media (max-width: 850px) {
-            .project-item, .timeline-grid { grid-template-columns: 1fr; gap: 30px; }
+            .projects-grid { grid-template-columns: 1fr; gap: 60px; }
             .container { padding: 0 25px; }
             section { padding: 50px 30px; margin-top: 30vh; }
             .profile-pic { width: 140px; height: 140px; }
@@ -180,66 +223,80 @@
 
     <div class="container">
         
-        <section id="about">
-            <h2>The Approach</h2>
-            <p style="font-size: 1.25rem; line-height: 2.1; color: var(--text-secondary);">
-                [cite_start]Merging the precision of Physics with the fluidity of modern Web Architecture[cite: 8, 14]. 
-                I build digital solutions that prioritize clarity, performance, and sophisticated 
-                [cite_start]intelligence[cite: 7]. As a specialist in both Big Data and AI, I bridge the gap 
-                [cite_start]between complex data systems and intuitive user interfaces[cite: 8, 20].
-            </p>
-        </section>
-
         <section id="projects">
             <h2>Selected Works</h2>
-            <div class="project-item">
-                <h3 class="project-title">Digital Brand Ecosystem</h3>
-                <p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation.</p>
-            </div>
-            <div class="project-item">
-                <h3 class="project-title">Municipal Workflow Systems</h3>
-                <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing.</p>
-            </div>
-            <div class="project-item">
-                <h3 class="project-title">AI Audio Authentication</h3>
-                <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
-            </div>
-            <div class="project-item">
-                <h3 class="project-title">Edge Vision Intelligence</h3>
-                <p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform.</p>
+            <div class="projects-grid">
+                
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3 class="project-title">Digital Brand Ecosystem</h3>
+                    <p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation.</p>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3 class="project-title">Municipal Workflow Systems</h3>
+                    <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing.</p>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3 class="project-title">AI Audio Authentication</h3>
+                    <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="project-image-placeholder"></div>
+                    <h3 class="project-title">Edge Vision Intelligence</h3>
+                    <p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform.</p>
+                </a>
+
             </div>
         </section>
 
-        <section id="history">
-            <h2>History & Creed</h2>
+        <section id="experience">
+            <h2>Professional History</h2>
             <div class="timeline-grid">
-                <div>
-                    <div class="timeline-item">
-                        <span class="timeline-date">2025 — Present</span>
-                        <h3 class="timeline-title">Freelance Developer</h3>
-                        <div class="timeline-org">Remote Operations</div>
-                        <p class="project-desc">Deploying full-stack web platforms and custom AI automation for global clients.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-date">2023 — 2024</span>
-                        <h3 class="timeline-title">Data Analyst</h3>
-                        [cite_start]<div class="timeline-org">Narmada AQUA Solutions [cite: 18]</div>
-                        [cite_start]<p class="project-desc">Managed business records and resolved operational inefficiencies through data analytics[cite: 19, 23].</p>
-                    </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2025 — Present</span>
+                    <h3 class="timeline-title">Freelance Developer</h3>
+                    <div class="timeline-org">Remote Operations</div>
+                    <p class="project-desc">Deploying full-stack web platforms and custom AI automation for global clients.</p>
                 </div>
-                <div>
-                    <div class="timeline-item">
-                        <span class="timeline-date">2025</span>
-                        <h3 class="timeline-title">Big Data & AI</h3>
-                        [cite_start]<div class="timeline-org">Georgian College [cite: 11]</div>
-                        [cite_start]<p class="project-desc">Graduated with Distinction in Big Data Analytics[cite: 12]. [cite_start]Currently specializing in Artificial Intelligence[cite: 20].</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-date">2023</span>
-                        <h3 class="timeline-title">B.Sc. Physics (Hons.)</h3>
-                        [cite_start]<div class="timeline-org">Chandigarh University [cite: 13]</div>
-                        [cite_start]<p class="project-desc">Graduated with Distinction[cite: 15]. [cite_start]Astrophysics research intern at IIT Bhubaneswar[cite: 16].</p>
-                    </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2023 — 2024</span>
+                    <h3 class="timeline-title">Data Analyst</h3>
+                    <div class="timeline-org">Narmada AQUA Solutions</div>
+                    <p class="project-desc">Managed business records and resolved operational inefficiencies through data analytics.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>The Approach & Academia</h2>
+            <p style="font-size: 1.25rem; line-height: 2.1; color: var(--text-secondary); margin-bottom: 60px;">
+                Merging the precision of Physics with the fluidity of modern Web Architecture. 
+                I build digital solutions that prioritize clarity, performance, and sophisticated 
+                intelligence. As a specialist in both Big Data and AI, I bridge the gap 
+                between complex data systems and intuitive user interfaces.
+            </p>
+
+            <div class="timeline-grid">
+                <div class="timeline-item">
+                    <span class="timeline-date">2025</span>
+                    <h3 class="timeline-title">Big Data & AI</h3>
+                    <div class="timeline-org">Georgian College</div>
+                    <p class="project-desc">Graduated with Distinction in Big Data Analytics. Currently specializing in Artificial Intelligence.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2023</span>
+                    <h3 class="timeline-title">B.Sc. Physics (Hons.)</h3>
+                    <div class="timeline-org">Chandigarh University</div>
+                    <p class="project-desc">Graduated with Distinction. Astrophysics research intern at IIT Bhubaneswar.</p>
                 </div>
             </div>
         </section>
@@ -250,6 +307,7 @@
                 ymehar.grfa3@gmail.com &nbsp; | &nbsp; Barrie, ON
             </p>
         </section>
+
     </div>
 
     <footer>
@@ -260,48 +318,36 @@
         const video = document.getElementById('scroll-video');
         video.pause();
 
-        // 1. Intersection Observer for section fades
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // 2. THE HIGH-FPS CONTINUOUS SCRUB ENGINE
         let targetScroll = 0;
         let currentScroll = 0;
         
-        // TWEAK THESE TWO VARIABLES:
-        const ease = 0.08; // How "heavy" or smooth the gears feel (0.01 to 0.2)
-        const playbackLoops = 3; // How many times the 13s video plays top-to-bottom
+        const ease = 0.08; 
+        const playbackLoops = 4; 
 
-        // The scroll event ONLY updates our target destination
         window.addEventListener('scroll', () => {
             const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            // Get raw fraction 0.0 to 1.0
             targetScroll = Math.max(0, Math.min(1, scrollPos / maxScroll));
         });
 
-        // This loop runs 60 times a second, totally independent of the mouse wheel
         function renderLoop() {
-            // Smoothly glide the current scroll position toward the target
             currentScroll += (targetScroll - currentScroll) * ease;
 
             if(video.readyState >= 2 && video.duration > 0) {
-                // Apply our loop multiplier
                 let loopedFrac = (currentScroll * playbackLoops) % 1;
                 
-                // If it loops back to 0, prevent the video from "flashing" backward
                 if (loopedFrac >= 0) {
                     video.currentTime = video.duration * loopedFrac;
                 }
             }
-
-            // Keep the loop running endlessly
             requestAnimationFrame(renderLoop);
         }
 
-        // Start the engine
         renderLoop();
     </script>
 </body>
