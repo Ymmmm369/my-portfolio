@@ -260,44 +260,49 @@
         const video = document.getElementById('scroll-video');
         video.pause();
 
-        // 1. Fade-in sections on scroll
+        // 1. Intersection Observer for section fades
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // 2. REAL-TIME SCRUB ENGINE (WITH MULTIPLIER)
+        // 2. THE HIGH-FPS CONTINUOUS SCRUB ENGINE
+        let targetScroll = 0;
+        let currentScroll = 0;
         
-        // --- TUNE THIS NUMBER ---
-        // How many times should the video play from top to bottom?
-        // Higher = gears spin faster. Lower = gears spin slower.
-        const playbackLoops = 4; 
-        // ------------------------
+        // TWEAK THESE TWO VARIABLES:
+        const ease = 0.08; // How "heavy" or smooth the gears feel (0.01 to 0.2)
+        const playbackLoops = 4; // How many times the 13s video plays top-to-bottom
 
-        const updateVideo = () => {
-            if(video.readyState >= 2 && video.duration > 0) {
-                const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                
-                // 1. Get the raw scroll fraction (0.0 to 1.0)
-                const scrollFrac = Math.max(0, Math.min(1, scrollPos / maxScroll));
-                
-                // 2. Multiply by our loops, and use modulo (%) to keep it looping between 0 and 1
-                // For example: if loops is 4, it goes 0 -> 1 -> 0 -> 1 -> 0 -> 1 -> 0 -> 1
-                const loopedFrac = (scrollFrac * playbackLoops) % 1;
-                
-                // 3. Apply directly to the video for instant response
-                video.currentTime = video.duration * loopedFrac;
-            }
-        };
-
+        // The scroll event ONLY updates our target destination
         window.addEventListener('scroll', () => {
-            window.requestAnimationFrame(updateVideo);
+            const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            // Get raw fraction 0.0 to 1.0
+            targetScroll = Math.max(0, Math.min(1, scrollPos / maxScroll));
         });
 
-        // Ensure metadata is fully loaded before calculating duration
-        video.addEventListener('loadedmetadata', updateVideo);
-        window.addEventListener('load', updateVideo);
+        // This loop runs 60 times a second, totally independent of the mouse wheel
+        function renderLoop() {
+            // Smoothly glide the current scroll position toward the target
+            currentScroll += (targetScroll - currentScroll) * ease;
+
+            if(video.readyState >= 2 && video.duration > 0) {
+                // Apply our loop multiplier
+                let loopedFrac = (currentScroll * playbackLoops) % 1;
+                
+                // If it loops back to 0, prevent the video from "flashing" backward
+                if (loopedFrac >= 0) {
+                    video.currentTime = video.duration * loopedFrac;
+                }
+            }
+
+            // Keep the loop running endlessly
+            requestAnimationFrame(renderLoop);
+        }
+
+        // Start the engine
+        renderLoop();
     </script>
 </body>
 </html>
