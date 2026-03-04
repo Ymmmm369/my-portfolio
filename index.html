@@ -266,15 +266,28 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // 2. REAL-TIME SCRUB ENGINE
+        // 2. REAL-TIME SCRUB ENGINE (WITH MULTIPLIER)
+        
+        // --- TUNE THIS NUMBER ---
+        // How many times should the video play from top to bottom?
+        // Higher = gears spin faster. Lower = gears spin slower.
+        const playbackLoops = 4; 
+        // ------------------------
+
         const updateVideo = () => {
-            if(video.readyState >= 2) {
+            if(video.readyState >= 2 && video.duration > 0) {
                 const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                
+                // 1. Get the raw scroll fraction (0.0 to 1.0)
                 const scrollFrac = Math.max(0, Math.min(1, scrollPos / maxScroll));
                 
-                // Direct frame application for real-time response
-                video.currentTime = video.duration * scrollFrac;
+                // 2. Multiply by our loops, and use modulo (%) to keep it looping between 0 and 1
+                // For example: if loops is 4, it goes 0 -> 1 -> 0 -> 1 -> 0 -> 1 -> 0 -> 1
+                const loopedFrac = (scrollFrac * playbackLoops) % 1;
+                
+                // 3. Apply directly to the video for instant response
+                video.currentTime = video.duration * loopedFrac;
             }
         };
 
@@ -282,7 +295,8 @@
             window.requestAnimationFrame(updateVideo);
         });
 
-        // Initialize on load
+        // Ensure metadata is fully loaded before calculating duration
+        video.addEventListener('loadedmetadata', updateVideo);
         window.addEventListener('load', updateVideo);
     </script>
 </body>
