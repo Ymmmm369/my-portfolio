@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f9f8f4; /* High-end Bone/Off-white */
-            --text-primary: #1a1a1a; /* Charcoal */
+            --bg: #f9f8f4; 
+            --text-primary: #1a1a1a; 
             --text-secondary: #555;
             --border: rgba(229, 229, 225, 0.8);
             --glass-bg: rgba(249, 248, 244, 0.85);
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Video Background Engine */
+        /* 1. CLEAN VIDEO BACKGROUND */
         #scroll-video {
             position: fixed;
             top: 0;
@@ -35,50 +35,43 @@
             object-fit: cover;
             z-index: -2;
             opacity: 1;
+            /* mix-blend-mode removed as per your manual color matching */
         }
 
-        /* Centered Profile Section */
-        .profile-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 15vh;
-            animation: fadeIn 2.5s ease-in-out;
+        [cite_start]/* Profile Image [cite: 1, 2, 4] */
+        .profile-nav {
+            position: fixed;
+            top: 40px;
+            left: 50px;
+            z-index: 100;
         }
 
         .profile-pic {
-            width: 180px; 
-            height: 180px;
+            width: 120px; 
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             filter: grayscale(100%);
             border: 1px solid var(--border);
-            margin-bottom: 40px;
-            transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: 0.5s ease;
             background-color: var(--bg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
-        .profile-pic:hover {
-            filter: grayscale(0%);
-            transform: scale(1.03);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.08);
-        }
+        .profile-pic:hover { filter: grayscale(0%); transform: scale(1.05); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hero Typography */
+        /* Hero */
         header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding-bottom: 25vh;
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3.5rem, 10vw, 7.5rem);
+            font-size: clamp(3.5rem, 10vw, 7rem);
             font-weight: 400;
             margin: 0;
             letter-spacing: -2px;
@@ -90,23 +83,21 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--text-secondary);
-            margin-top: 25px;
-            font-weight: 400;
+            margin-top: 20px;
         }
 
-        /* Sections & Spacing */
+        /* 2. OPTIMIZED CONTAINER SPACING */
         .container { 
             max-width: 1100px; 
             margin: 0 auto; 
-            padding: 0 50px 40vh; 
+            padding: 0 50px 30vh; 
         }
 
         section {
             margin-top: 45vh; 
-            padding: 90px;
+            padding: 80px;
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             opacity: 0;
             transform: translateY(40px);
@@ -117,50 +108,50 @@
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 400;
-            margin: 0 0 60px 0;
+            margin: 0 0 50px 0;
             border-bottom: 1px solid var(--text-primary);
-            padding-bottom: 25px;
+            padding-bottom: 20px;
         }
 
-        /* Content Layouts */
+        [cite_start]/* Projects Section [cite: 1, 2, 28, 29] */
         .project-item {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 60px;
-            padding: 50px 0;
+            gap: 50px;
+            padding: 45px 0;
             border-bottom: 1px solid var(--border);
         }
 
         .project-item:last-child { border-bottom: none; }
-        .project-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; margin: 0; }
-        .project-desc { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); }
+        .project-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; }
+        .project-desc { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); }
 
+        [cite_start]/* Experience & Education [cite: 11, 13, 18, 20] */
         .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-        .timeline-item { margin-bottom: 60px; }
+        .timeline-item { margin-bottom: 50px; }
         .timeline-date { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
-        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 12px 0 8px 0; }
-        .timeline-org { font-weight: 600; font-size: 1rem; margin-bottom: 12px; }
+        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 10px 0 5px 0; }
+        .timeline-org { font-weight: 600; font-size: 1rem; margin-bottom: 10px; }
 
-        /* Contact Section */
-        .contact-box { text-align: center; border: none; background: transparent; backdrop-filter: none; margin-top: 25vh; }
+        .contact-box { text-align: center; border: none; background: transparent; backdrop-filter: none; margin-top: 20vh; }
         .contact-link {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: 3.5rem;
             color: var(--text-primary);
             text-decoration: none;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: 0.4s;
         }
-        .contact-link:hover { font-style: italic; opacity: 0.5; padding-left: 20px; }
+        .contact-link:hover { font-style: italic; opacity: 0.6; }
 
-        footer { height: 25vh; text-align: center; color: var(--text-secondary); font-size: 0.85rem; letter-spacing: 2px; }
+        footer { height: 20vh; text-align: center; color: var(--text-secondary); font-size: 0.8rem; letter-spacing: 1px; }
 
         @media (max-width: 850px) {
-            .project-item, .timeline-grid { grid-template-columns: 1fr; gap: 30px; }
-            .container { padding: 0 25px; }
-            section { padding: 50px 30px; margin-top: 30vh; }
-            .profile-pic { width: 140px; height: 140px; }
+            .project-item, .timeline-grid { grid-template-columns: 1fr; gap: 20px; }
+            .container { padding: 0 20px; }
+            section { padding: 40px 20px; margin-top: 25vh; }
+            .profile-pic { width: 90px; height: 90px; }
         }
     </style>
 </head>
@@ -170,22 +161,23 @@
         <source src="gears.mp4" type="video/mp4">
     </video>
 
+    <div class="profile-nav">
+        <img src="my_pic.jpg" alt="Yash Mehar" class="profile-pic">
+    </div>
+
     <header>
-        <div class="profile-container">
-            <img src="my_pic.jpg" alt="Yash Mehar" class="profile-pic">
-        </div>
         <h1>yash mehar</h1>
-        <p>Full-Stack Web • AI Intelligence • Data Analytics</p>
+        <p>Full-Stack • AI Intelligence • Data Analytics</p>
     </header>
 
     <div class="container">
         
         <section id="about">
             <h2>The Approach</h2>
-            <p style="font-size: 1.25rem; line-height: 2.1; color: var(--text-secondary);">
+            <p style="font-size: 1.2rem; line-height: 2; color: var(--text-secondary);">
                 [cite_start]Merging the precision of Physics with the fluidity of modern Web Architecture[cite: 8, 14]. 
                 I build digital solutions that prioritize clarity, performance, and sophisticated 
-                [cite_start]intelligence[cite: 7]. As a specialist in both Big Data and AI, I bridge the gap 
+                [cite_start]intelligence[cite: 7, 8]. As a specialist in both Big Data and AI, I bridge the gap 
                 [cite_start]between complex data systems and intuitive user interfaces[cite: 8, 20].
             </p>
         </section>
@@ -194,19 +186,19 @@
             <h2>Selected Works</h2>
             <div class="project-item">
                 <h3 class="project-title">Digital Brand Ecosystem</h3>
-                <p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation.</p>
+                [cite_start]<p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation[cite: 1, 2].</p>
             </div>
             <div class="project-item">
                 <h3 class="project-title">Municipal Workflow Systems</h3>
-                <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing.</p>
+                [cite_start]<p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department to optimize document processing[cite: 1].</p>
             </div>
             <div class="project-item">
                 <h3 class="project-title">AI Audio Authentication</h3>
-                <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
+                [cite_start]<p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns[cite: 1].</p>
             </div>
             <div class="project-item">
                 <h3 class="project-title">Edge Vision Intelligence</h3>
-                <p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform.</p>
+                [cite_start]<p class="project-desc">Implemented real-time image segmentation and pose estimation workflows on the NVIDIA Jetson hardware platform[cite: 1].</p>
             </div>
         </section>
 
@@ -218,7 +210,7 @@
                         <span class="timeline-date">2025 — Present</span>
                         <h3 class="timeline-title">Freelance Developer</h3>
                         <div class="timeline-org">Remote Operations</div>
-                        <p class="project-desc">Deploying full-stack web platforms and custom AI automation for global clients.</p>
+                        [cite_start]<p class="project-desc">Deploying full-stack web platforms and custom AI automation for global clients[cite: 1, 2].</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-date">2023 — 2024</span>
@@ -245,44 +237,50 @@
         </section>
 
         <section id="contact" class="contact-box">
-            <a href="mailto:ymehar.grfa3@gmail.com" class="contact-link">Connect &mdash;</a>
-            <p style="margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: var(--text-secondary);">
-                ymehar.grfa3@gmail.com &nbsp; | &nbsp; Barrie, ON
+            <a href="mailto:ymehar.grfa3@gmail.com" class="contact-link">Connect.</a>
+            <p style="margin-top: 30px; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">
+                ymehar.grfa3@gmail.com &nbsp; | &nbsp; [cite_start]Barrie, ON [cite: 4]
             </p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 YASH MEHAR</p>
+        <p>© 2026 YASH MEHAR</p>
     </footer>
 
     <script>
         const video = document.getElementById('scroll-video');
         video.pause();
 
-        // 1. Fade-in sections on scroll
+        // 1. Intersection Observer for section fades
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // 2. REAL-TIME SCRUB ENGINE
+        // 2. REAL-TIME VIDEO SCRUB ENGINE
+        // This function forces the video to a specific time immediately
         const updateVideo = () => {
             if(video.readyState >= 2) {
                 const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                
+                // Calculate position fraction
                 const scrollFrac = Math.max(0, Math.min(1, scrollPos / maxScroll));
                 
-                // Direct frame application for real-time response
+                // Map to video duration
                 video.currentTime = video.duration * scrollFrac;
             }
         };
 
+        // 3. EVENT LISTENERS
+        // 'scroll' is triggered every time the mouse wheel or touch moves
         window.addEventListener('scroll', () => {
+            // Using requestAnimationFrame inside the scroll event for hardware-accelerated rendering
             window.requestAnimationFrame(updateVideo);
         });
 
-        // Initialize on load
+        // Initialize frame on load
         window.addEventListener('load', updateVideo);
     </script>
 </body>
