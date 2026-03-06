@@ -12,7 +12,7 @@
             --text-secondary: #555;
             --border: rgba(229, 229, 225, 0.8);
             --glass-bg: rgba(249, 248, 244, 0.85); 
-            --card-bg: #f6f5ef; 
+            --card-bg: #f6f5ef; /* Slightly off-white differentiable color */
             --border-diff: rgba(229, 229, 225, 0.4); 
         }
 
@@ -53,13 +53,13 @@
         header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7.5rem); font-weight: 400; margin: 0; letter-spacing: -2px; text-transform: lowercase; }
         header p { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-secondary); margin-top: 25px; }
 
-        /* Sections: Styling as Differentiable Pages/Cards */
+        /* Sections: Styled as Differentiable Pages/Cards */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 50px 40vh; }
         section {
             margin-top: 45vh; padding: 90px;
             background: var(--card-bg); 
             border: 1px solid var(--border-diff); 
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03); 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.04); /* Soft lift shadow */
             opacity: 0;
             transform: translateY(40px);
             transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -71,7 +71,7 @@
         .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 80px 50px; }
         .project-card { text-decoration: none; color: inherit; display: block; cursor: pointer; }
         
-        /* Updated Image Placeholders to Fetch GitHub Images */
+        /* Updated Image Placeholders with GitHub Fetching Properties */
         .project-image-placeholder { 
             width: 100%; 
             aspect-ratio: 4/5; 
@@ -86,7 +86,7 @@
         }
         .project-card:hover .project-image-placeholder { transform: scale(0.98); background-color: rgba(26, 26, 26, 0.1); }
 
-        /* Ensure your filenames match these when you upload them to GitHub */
+        /* Replace these with your actual GitHub raw image URLs later */
         .project-card[data-modal="modal-1"] .project-image-placeholder { background-image: url('chad-turtle-thumb.jpg'); }
         .project-card[data-modal="modal-2"] .project-image-placeholder { background-image: url('innisfil-thumb.jpg'); }
         .project-card[data-modal="modal-3"] .project-image-placeholder { background-image: url('audio-auth-thumb.jpg'); }
@@ -109,63 +109,72 @@
         .skill-tag { border: 1px solid var(--border); padding: 12px 24px; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-secondary); background: transparent; transition: 0.3s; }
         .skill-tag:hover { border-color: var(--text-primary); color: var(--text-primary); }
 
-        /* Editorial About Section (Floating Layout) */
+        /* Editorial About Section (Floating Layout with Wrap) */
         .about-content { margin-bottom: 80px; }
         .about-content::after { content: ""; display: table; clear: both; }
-        .about-image-wrapper { float: left; width: 35%; max-width: 320px; aspect-ratio: 4/5; margin-right: 50px; margin-bottom: 30px; background-color: rgba(26, 26, 26, 0.05); border: 1px solid rgba(26, 26, 26, 0.1); overflow: hidden; position: relative; }
+        .about-image-wrapper { 
+            float: left; 
+            width: 35%; 
+            max-width: 320px; 
+            aspect-ratio: 4/5; 
+            margin-right: 50px; 
+            margin-bottom: 30px; 
+            background-color: rgba(26, 26, 26, 0.05); 
+            border: 1px solid rgba(26, 26, 26, 0.1); 
+            overflow: hidden; 
+            position: relative; 
+        }
         .about-image { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .about-image-wrapper:hover .about-image { filter: grayscale(0%); transform: scale(1.03); }
         .about-content p { font-size: 1.15rem; line-height: 2.1; color: var(--text-secondary); margin-bottom: 25px; }
-        .about-content p:last-child { margin-bottom: 0; }
         .about-content strong { color: var(--text-primary); font-weight: 600; }
 
-        /* Contact Section Override */
+        /* Contact Section Refinement */
         section#contact { 
             background: transparent !important; 
             border: none !important; 
             box-shadow: none !important; 
             padding: 90px 0; 
-            margin-top: 15vh; 
-            text-align: center; /* Centers the inner wrapper */
+            margin-top: 20vh; 
+            text-align: center; 
         }
         
         .contact-content-wrapper { 
-            display: inline-block; /* Wraps tightly around content so text-align left works correctly */
+            display: inline-block; 
+            width: 100%; 
+            max-width: 1100px; 
             text-align: center; 
         }
 
         .pre-connect-text { 
             font-family: 'Playfair Display', serif; 
-            font-size: 2.2rem; /* Increased size */
+            font-size: 2.8rem; /* Larger font size */
             font-weight: 400; 
             font-style: italic; 
             color: var(--text-primary); 
             margin: 0 0 15px 0; 
-            text-align: left; /* Snaps left inside the centered wrapper */
+            text-align: left; /* Aligned to the left */
         }
 
         .contact-link { 
-            display: inline-block;
             font-family: 'Playfair Display', serif; 
             font-size: clamp(3rem, 6vw, 5rem); 
             color: var(--text-primary); 
             text-decoration: none; 
             transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            display: inline-block;
+            text-align: center; /* Center the link text */
         }
 
-        .contact-link:hover { 
-            font-style: italic; 
-            opacity: 0.5; 
-            padding-left: 20px; 
-        }
+        .contact-link:hover { font-style: italic; opacity: 0.5; padding-left: 20px; }
 
         .contact-footer-info { 
             letter-spacing: 3px; 
             text-transform: uppercase; 
             font-size: 0.85rem; 
             color: var(--text-secondary); 
-            margin: 30px 0 0 0; 
-            text-align: center;
+            margin: 40px 0 0 0; 
+            text-align: center; /* Centered location/email info */
         }
 
         footer { height: 25vh; text-align: center; color: var(--text-secondary); font-size: 0.85rem; letter-spacing: 2px; }
@@ -173,20 +182,13 @@
         /* Modal Styles */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(249, 248, 244, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-content { background: var(--glass-bg); width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 60px; border: 1px solid rgba(26, 26, 26, 0.15); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); transform: translateY(40px); transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative; }
+        .modal-content { background: var(--bg); width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 60px; border: 1px solid rgba(26, 26, 26, 0.15); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); transform: translateY(40px); transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative; }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .close-btn { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; line-height: 1; cursor: pointer; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 300; transition: 0.3s; }
         .close-btn:hover { color: var(--text-primary); transform: scale(1.1); }
         .modal-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 400; }
         .modal-body-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 30px; }
         
-        /* Modal Inner Styles */
-        .modal-sub-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 30px 0 15px 0; font-weight: 400; color: var(--text-primary); }
-        .modal-list { list-style: none; padding: 0; margin-bottom: 30px; }
-        .modal-list li { margin-bottom: 15px; font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); }
-        .modal-link { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid rgba(26, 26, 26, 0.2); transition: 0.3s ease; font-style: italic; }
-        .modal-link:hover { border-bottom-color: var(--text-primary); opacity: 0.7; }
-
         @media (max-width: 850px) {
             .projects-grid { grid-template-columns: 1fr; gap: 60px; }
             .container { padding: 0 25px; }
@@ -194,46 +196,8 @@
             .profile-pic { width: 140px; height: 140px; }
             .modal-content { padding: 40px 20px; width: 95%; }
             .about-image-wrapper { float: none; width: 100%; max-width: none; margin-right: 0; margin-bottom: 40px; }
+            .pre-connect-text { font-size: 1.8rem; }
         }
-
-        /* Centers the entire section container */
-        section#contact { 
-            background: transparent !important; 
-            border: none !important; 
-            box-shadow: none !important; 
-            padding: 90px 0; 
-            margin-top: 15vh; 
-            text-align: center; 
-        }
-
-        /* Wraps content to keep it centered as a block, but allows internal left-alignment */
-        .contact-content-wrapper { 
-            display: inline-flex; 
-            flex-direction: column; 
-            align-items: flex-start; /* This forces all children to align to the left of this box */
-            text-align: left; 
-        }
-
-        .pre-connect-text { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.2rem; 
-            font-weight: 400; 
-            font-style: italic; 
-            color: var(--text-primary); 
-            margin: 0 0 10px 0;
-            /* Removed 'text-align: center' if it was here */
-        }
-
-        /* Keeps the email info centered relative to the whole page if desired, 
-           or remove 'align-self' to keep it left-aligned with the text above */
-        .contact-footer-info { 
-            letter-spacing: 3px; 
-            text-transform: uppercase; 
-            font-size: 0.85rem; 
-            color: var(--text-secondary); 
-            margin: 30px 0 0 0; 
-            align-self: center; /* This keeps the email/location centered under the left-aligned text */
-        } 
     </style>
 </head>
 <body>
@@ -369,72 +333,13 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2 class="modal-title">Digital Brand Ecosystem</h2>
-            <p class="modal-body-text">Designed and developed a full-stack platform <a href="https://www.chadturtle.com" target="_blank" class="modal-link">(www.chadturtle.com)</a> tailored for a digital brand launch. The project involved conceptualizing the entire UI/UX layout from scratch to ensure a frictionless user journey.</p>
+            <p class="modal-body-text">Designed and developed a full-stack platform <a href="https://www.chadturtle.com" target="_blank" class="modal-link">(www.chadturtle.com)</a> tailored for a digital brand launch.</p>
             <h3 class="modal-sub-title">The Implementation</h3>
             <ul class="modal-list">
-                <li><strong>Bespoke UI/UX & Web Engine:</strong> Developed a custom-coded responsive landing page and a high-performance <a href="https://www.chadturtle.com/play" class="modal-link">web application</a> designed for a frictionless user journey.</li>
-                <li><strong>Integrated 3D Modeling:</strong> Sculpted and integrated original <a href="https://www.chadturtle.com/nfts" class="modal-link">interactive 3D models</a> directly into the web environment.</li>
-                <li><strong>AI-Driven Asset Generation:</strong> Engineered a proprietary <a href="https://www.chadturtle.com/generator" class="modal-link">image generation pipeline</a> that allows for the creation of brand-aligned visual assets.</li>
-                <li><strong>Asset Synthesis:</strong> Managed end-to-end creation of visual aesthetics.</li>
+                <li><strong>Bespoke UI/UX & Web Engine:</strong> Developed a custom-coded landing page and high-performance <a href="https://www.chadturtle.com/play" class="modal-link">web application</a>.</li>
+                <li><strong>Integrated 3D Modeling:</strong> Sculpted and integrated original <a href="https://www.chadturtle.com/nfts" class="modal-link">interactive 3D models</a>.</li>
+                <li><strong>AI-Driven Asset Generation:</strong> Engineered a proprietary <a href="https://www.chadturtle.com/generator" class="modal-link">image generation pipeline</a>.</li>
             </ul>
-            <h3 class="modal-sub-title">Technical Signature</h3>
-            <p class="modal-body-text"><strong>Frontend:</strong> React/Next.js, Tailwind CSS, Framer Motion.<br><strong>Graphics & Vision:</strong> 3D Model Rendering, Custom AI Image Generators.<br><strong>Architecture:</strong> UI/UX Synthesis, Community-Centric Feature Engineering.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modal-2">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 class="modal-title">Municipal AI Workflow & Process Intelligence</h2>
-            <p class="modal-body-text">Automated workflow solution engineered specifically for the Town of Innisfil's Development Engineering department.</p>
-            <h3 class="modal-sub-title">AI Integration & Implementation</h3>
-            <ul class="modal-list">
-                <li><strong>Real-Time Architectural Sync:</strong> Platform that synchronizes document status and review data across all stakeholders instantly.</li>
-                <li><strong>Automated Peer Review Pipeline:</strong> Bespoke digital environment for reviewers to process reports and documents.</li>
-                <li><strong>Pattern Recognition & Analytics:</strong> Backend that analyzes historical data to provide predictive insights.</li>
-                <li><strong>Document Intelligence:</strong> Integrated AI validation checkpoints.</li>
-            </ul>
-            <h3 class="modal-sub-title">Technical Signature</h3>
-            <p class="modal-body-text"><strong>Domain:</strong> AI-Integrated Automation, Real-Time Data Sync, Process Engineering.<br><strong>Architecture:</strong> Collaborative Review Platforms, Predictive Analytics, Automated Routing Pipelines.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modal-3">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 class="modal-title">AI Audio Authentication | Neural Signal Research</h2>
-            <p class="modal-body-text">authentication layer, detecting the "digital fingerprints" that human ears cannot perceive.</p>
-            <h3 class="modal-sub-title">The Vision</h3>
-            <p class="modal-body-text">identified a critical security gap: organic resonance and high-fidelity synthetic clones.</p>
-            <h3 class="modal-sub-title">The Engineering</h3>
-            <ul class="modal-list">
-                <li><strong>Signal Decomposition:</strong> engineered a custom preprocessing pipeline.</li>
-                <li><strong>Neural Architecture:</strong> convolutional neural network specifically optimized.</li>
-                <li><strong>Anomaly Fingerprinting:</strong> system is built to identify phase inconsistencies.</li>
-                <li><strong>Independent Research:</strong> curated the training datasets.</li>
-            </ul>
-            <p class="modal-body-text"><strong><a href="#" class="modal-link">Access My Research & Code →</a></strong></p>
-            <h3 class="modal-sub-title">Technical Signature</h3>
-            <p class="modal-body-text"><strong>Expertise:</strong> Deep Learning, Audio Signal Processing, AI Security.<br><strong>Core Stack:</strong> Python, TensorFlow/PyTorch, Librosa, Spectral Mapping.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modal-4">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 class="modal-title">Hivegram | AI Agent Social Layer & Solana Integration</h2>
-            <h3 class="modal-sub-title">The Vision</h3>
-            <p class="modal-body-text">I architected Hivegram to explore the next evolution of social infrastructure: a platform where Autonomous <strong>AI Agents</strong> interact seamlessly with human users within a decentralized environment. By integrating directly with the <strong>Solana Blockchain</strong>, I built a system that treats social interactions as verifiable on-chain events, enabling a new paradigm of transparent, agent-led digital ecosystems.</p>
-            <h3 class="modal-sub-title">The Engineering</h3>
-            <ul class="modal-list">
-                <li><strong>AI Agent Framework:</strong> I engineered the logic for autonomous agents capable of independent interaction, content synthesis, and real-time social engagement within the platform's feed.</li>
-                <li><strong>Solana Web3 Integration:</strong> I developed the bridge between the application layer and the Solana network, implementing high-speed, low-cost on-chain verification for user and agent actions.</li>
-                <li><strong>Scalable Data Architecture:</strong> I designed a custom backend to manage the unique data flow requirements of AI-human hybrid environments, ensuring sub-second state updates and real-time synchronization.</li>
-                <li><strong>Full-Stack Synthesis:</strong> I managed the end-to-end deployment—from the low-latency frontend transition logic to the complex integration of decentralized wallet protocols and agent-side API pipelines.</li>
-            </ul>
-            <p class="modal-body-text"><strong><a href="#" class="modal-link">Analyze the Protocol →</a></strong></p>
-            <h3 class="modal-sub-title">Technical Signature</h3>
-            <p class="modal-body-text"><strong>Core Expertise:</strong>AI Agent Deployment, Web3 / Blockchain Engineering, Full-Stack Architecture.<br><strong>Core Stack:</strong> Solana (Web3.js/Anchor), Python (AI Agents), React/Next.js, Node.js.</p>
         </div>
     </div>
 
@@ -474,8 +379,11 @@
         projectCards.forEach(card => {
             card.addEventListener('click', (e) => {
                 const modalId = card.getAttribute('data-modal');
-                document.getElementById(modalId).classList.add('active');
-                document.body.style.overflow = 'hidden';
+                const modal = document.getElementById(modalId);
+                if(modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
             });
         });
 
