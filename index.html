@@ -70,7 +70,16 @@
         }
         section.visible { opacity: 1; transform: translateY(0); }
         h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin: 0 0 60px 0; border-bottom: 1px solid var(--text-primary); padding-bottom: 25px; }
-
+        .read-more-hint {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-left: 20px;
+            letter-spacing: 0.5px;
+            vertical-align: middle; /* Keeps it aligned nicely next to the large text */
+        }
         /* Projects Grid */
         .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 80px 50px; }
         .project-card { text-decoration: none; color: inherit; display: block; cursor: pointer; }
