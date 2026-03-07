@@ -86,11 +86,26 @@
         }
         .project-card:hover .project-image-placeholder { transform: scale(0.98); background-color: rgba(26, 26, 26, 0.1); }
 
-        /* Replace these with your actual GitHub raw image URLs later */
+        /* --- NEW VIDEO CLASS --- */
+        .project-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: grayscale(100%);
+            transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .project-card:hover .project-video {
+            filter: grayscale(0%);
+        }
+
+        /* Replace these with your actual GitHub raw image URLs later.
+           Note: Project 3 & 4 URLs are removed as they will use the video tag now. */
         .project-card[data-modal="modal-1"] .project-image-placeholder { background-image: url('project_1.jpg'); }
-        .project-card[data-modal="modal-2"] .project-image-placeholder { background-image: url('project_2.png'); }
-        .project-card[data-modal="modal-3"] .project-image-placeholder { background-image: url('project_3.png'); }
-        .project-card[data-modal="modal-4"] .project-image-placeholder { background-image: url('project_4.jpg'); }
+        .project-card[data-modal="modal-2"] .project-image-placeholder { background-image: url('project_2.jpg'); }
 
         .project-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0 0 15px 0; font-weight: 400; }
         .project-desc { font-size: 1rem; line-height: 1.8; color: var(--text-secondary); margin: 0; }
@@ -231,18 +246,29 @@
                     <h3 class="project-title">Digital Brand Ecosystem</h3>
                     <p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation.</p>
                 </div>
+                
                 <div class="project-card" data-modal="modal-2">
                     <div class="project-image-placeholder"></div>
                     <h3 class="project-title">Municipal Workflow Systems</h3>
                     <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department.</p>
                 </div>
+                
                 <div class="project-card" data-modal="modal-3">
-                    <div class="project-image-placeholder"></div>
+                    <div class="project-image-placeholder">
+                        <video class="project-video" autoplay loop muted playsinline>
+                            <source src="project_3.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3 class="project-title">AI Audio Authentication</h3>
                     <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
                 </div>
+                
                 <div class="project-card" data-modal="modal-4">
-                    <div class="project-image-placeholder"></div>
+                    <div class="project-image-placeholder">
+                        <video class="project-video" autoplay loop muted playsinline>
+                            <source src="project_4.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3 class="project-title">Hivegram Architecture</h3>
                     <p class="project-desc">Architected a scalable digital platform prioritizing seamless connectivity and dynamic data flow.</p>
                 </div>
@@ -411,7 +437,7 @@
                 <li><strong>Scalable Data Architecture:</strong> I designed a custom backend to manage the unique data flow requirements of AI-human hybrid environments, ensuring sub-second state updates and real-time synchronization.</li>
                 <li><strong>IFull-Stack Synthesis:</strong> I managed the end-to-end deployment—from the low-latency frontend transition logic to the complex integration of decentralized wallet protocols and agent-side API pipelines.</li>
             </ul>
-            <p class="modal-body-text"><strong><a href="#" target="_blank" class="modal-link">Access the Protocol →</a></strong></p>
+            <p class="modal-body-text"><strong><a href="#" target="_blank" class="modal-link">Analyze the Protocol →</a></strong></p>
             <h3 class="modal-sub-title">Technical Signature</h3>
             <p class="modal-body-text"><strong>Core Expertise:</strong>AI Agent Deployment, Web3 / Blockchain Engineering, Full-Stack Architecture.<br><strong>Core Stack:</strong> Solana (Web3.js/Anchor), Python (AI Agents), React/Next.js, Node.js.</p>
         </div>
