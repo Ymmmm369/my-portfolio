@@ -14,6 +14,10 @@
             --glass-bg: rgba(249, 248, 244, 0.85); 
             --card-bg: #f6f5ef; /* Slightly off-white differentiable color */
             --border-diff: rgba(229, 229, 225, 0.4); 
+
+            /* --- NEW VARIABLE FOR HOVER GIF OPACITY --- */
+            /* Control transparency/opacity here (0.0 for fully clear to 1.0 for solid) */
+            --hover-overlay-opacity: 0.6;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -94,12 +98,31 @@
             position: absolute;
             top: 0;
             left: 0;
-            filter: grayscale(0%);
+            filter: grayscale(100%);
             transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .project-card:hover .project-video {
             filter: grayscale(0%);
+        }
+
+        /* --- HOVER GIF OVERLAY --- */
+        .hover-gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            z-index: 5; /* Ensures it sits on top of everything else */
+            transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            pointer-events: none; /* Prevents the gif from interfering with clicks */
+        }
+
+        .project-card:hover .hover-gif {
+            /* --- UPDATED TO USE THE NEW VARIABLE --- */
+            opacity: var(--hover-overlay-opacity); /* Semi-transparent, controlled by variable */
         }
 
         /* Replace these with your actual GitHub raw image URLs later.
@@ -242,13 +265,17 @@
             <h2>Selected Works</h2>
             <div class="projects-grid">
                 <div class="project-card" data-modal="modal-1">
-                    <div class="project-image-placeholder"></div>
+                    <div class="project-image-placeholder">
+                        <img src="project_more.gif" class="hover-gif" alt="View Project">
+                    </div>
                     <h3 class="project-title">Digital Brand Ecosystem</h3>
                     <p class="project-desc">Designed and developed a full-stack platform featuring bespoke UI/UX layouts and custom asset generation.</p>
                 </div>
                 
                 <div class="project-card" data-modal="modal-2">
-                    <div class="project-image-placeholder"></div>
+                    <div class="project-image-placeholder">
+                        <img src="project_more.gif" class="hover-gif" alt="View Project">
+                    </div>
                     <h3 class="project-title">Municipal Workflow Systems</h3>
                     <p class="project-desc">Engineered an automated peer review solution for the Town of Innisfil's Engineering department.</p>
                 </div>
@@ -258,6 +285,7 @@
                         <video class="project-video" autoplay loop muted playsinline>
                             <source src="project_3.mp4" type="video/mp4">
                         </video>
+                        <img src="project_more.gif" class="hover-gif" alt="View Project">
                     </div>
                     <h3 class="project-title">AI Audio Authentication</h3>
                     <p class="project-desc">Machine learning model built to analyze spectral features and accurately classify synthetic audio patterns.</p>
@@ -268,6 +296,7 @@
                         <video class="project-video" autoplay loop muted playsinline>
                             <source src="project_4.mp4" type="video/mp4">
                         </video>
+                        <img src="project_more.gif" class="hover-gif" alt="View Project">
                     </div>
                     <h3 class="project-title">Hivegram Architecture</h3>
                     <p class="project-desc">Architected a scalable digital platform prioritizing seamless connectivity and dynamic data flow.</p>
@@ -368,9 +397,9 @@
             <p class="modal-body-text">Designed and developed a full-stack platform <a href="https://www.chadturtle.com" target="_blank" class="modal-link">(www.chadturtle.com)</a> tailored for a digital brand launch. The project involved conceptualizing the entire UI/UX layout from scratch to ensure a frictionless user journey.</p>
             <h3 class="modal-sub-title">The Implementation</h3>
             <ul class="modal-list">
-                <li><strong>Bespoke UI/UX & Web Engine:</strong> Developed a custom-coded responsive landing page and a high-performance <a href="https://www.chadturtle.com/play" target="_blank" class="modal-link">web application</a> designed for a frictionless user journey.</li>
-                <li><strong>Integrated 3D Modeling:</strong> Sculpted and integrated original <a href="https://www.chadturtle.com/nfts" target="_blank" class="modal-link">interactive 3D models</a> directly into the web environment.</li>
-                <li><strong>AI-Driven Asset Generation:</strong> Engineered a proprietary <a href="https://www.chadturtle.com/generator" target="_blank" class="modal-link">image generation pipeline</a> that allows for the creation of brand-aligned visual assets.</li>
+                <li><strong>Bespoke UI/UX & Web Engine:</strong> Developed a custom-coded responsive landing page and a high-performance <a href="https://www.chadturtle.com/play" class="modal-link">web application</a> designed for a frictionless user journey.</li>
+                <li><strong>Integrated 3D Modeling:</strong> Sculpted and integrated original <a href="https://www.chadturtle.com/nfts" class="modal-link">interactive 3D models</a> directly into the web environment.</li>
+                <li><strong>AI-Driven Asset Generation:</strong> Engineered a proprietary <a href="https://www.chadturtle.com/generator" class="modal-link">image generation pipeline</a> that allows for the creation of brand-aligned visual assets.</li>
                 <li><strong>Asset Synthesis:</strong> Managed end-to-end creation of visual aesthetics.</li>
             </ul>
             <h3 class="modal-sub-title">Technical Signature</h3>
@@ -395,7 +424,7 @@
             <ul class="modal-list">
                 <li><strong>Data Flow Architecture:</strong> Developed a system that eliminates manual data entry, reducing the margin for human error and ensuring data integrity across the lifecycle of a permit.</li>
                 <li><strong>Centralization:</strong> Engineered a platform that synchronizes document status and review data across all stakeholders instantly, ensuring a single, verifiable source of truth.</li>
-                <li><strong>Automated Peer Review Pipeline:</strong> Developed a bespoke digital environment for reviewers to process reports and documents, eliminating the inefficiencies of manual email loops.</li>
+                <li><strong>Automated Peer Review Pipeline:</strong> Developed a bespoke digital environment for reviewers to process reports and documents, eliminating the inefficiencies of manual email loops. Provisioned a dedicated interface for peer reviewers to directly access, annotate, and approve reports.</li>
                 <li><strong>Document Intelligence:</strong> Integrated AI validation checkpoints to scan and verify project metadata before the human review phase begins.</li>
             </ul>
             <h3 class="modal-sub-title">Technical Signature</h3>
@@ -417,7 +446,7 @@
                 <li><strong>Anomaly Fingerprinting:</strong> The system is built to identify phase inconsistencies and harmonic distortions—telltale signs of generative speech models that occur during the synthesis process.</li>
                 <li><strong>Independent Research:</strong> I curated the training datasets and refined the model through iterative testing to achieve high-confidence binary classification ("Real" vs. "Synthetic").</li>
             </ul>
-            <p class="modal-body-text"><strong><a href="#" target="_blank" class="modal-link">Access My Research & Code →</a></strong></p>
+            <p class="modal-body-text"><strong><a href="#" class="modal-link">Access My Research & Code →</a></strong></p>
             <h3 class="modal-sub-title">Technical Signature</h3>
             <p class="modal-body-text"><strong>Expertise:</strong> Deep Learning, Audio Signal Processing, AI Security.<br><strong>Core Stack:</strong> Python, TensorFlow/PyTorch, Librosa, Spectral Mapping.</p>
         </div>
@@ -437,7 +466,7 @@
                 <li><strong>Scalable Data Architecture:</strong> I designed a custom backend to manage the unique data flow requirements of AI-human hybrid environments, ensuring sub-second state updates and real-time synchronization.</li>
                 <li><strong>IFull-Stack Synthesis:</strong> I managed the end-to-end deployment—from the low-latency frontend transition logic to the complex integration of decentralized wallet protocols and agent-side API pipelines.</li>
             </ul>
-            <p class="modal-body-text"><strong><a href="#" target="_blank" class="modal-link">Analyze the Protocol →</a></strong></p>
+            <p class="modal-body-text"><strong><a href="#" class="modal-link">Analyze the Protocol →</a></strong></p>
             <h3 class="modal-sub-title">Technical Signature</h3>
             <p class="modal-body-text"><strong>Core Expertise:</strong>AI Agent Deployment, Web3 / Blockchain Engineering, Full-Stack Architecture.<br><strong>Core Stack:</strong> Solana (Web3.js/Anchor), Python (AI Agents), React/Next.js, Node.js.</p>
         </div>
