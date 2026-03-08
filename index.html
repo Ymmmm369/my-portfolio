@@ -258,11 +258,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 200px; /* Spacing between the three links */
+            gap: 75px; /* Spacing between the three links */
             padding-bottom: 30px; /* Space between icons and the copyright text */
             /* --- ADD THESE TWO LINES --- */
             position: relative;
             top: -250px; /* Change this number to move them higher or lower */
+        }
+
+        .social-separator {
+            color: var(--text-primary);
+            opacity: 0.3; /* Keeps it subtle so it doesn't distract from the icons */
+            font-size: 1.5rem;
+            font-weight: 300;
+            user-select: none; /* Prevents users from accidentally highlighting the line */
         }
         
         .social-link {
@@ -451,12 +459,16 @@
                 <span class="social-text">GitHub</span>
             </a>
 
+            <span class="social-separator">|</span>
+
             <a href="yash_mehar_resume.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
                 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                 </svg>
                 <span class="social-text">Resume</span>
             </a>
+
+            <span class="social-separator">|</span>
 
             <a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener noreferrer" class="social-link">
                 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
