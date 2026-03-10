@@ -302,6 +302,33 @@
             font-weight: 600;
         }
 
+        /* --- NEW: Proof of Identity Block --- */
+        .proof-of-identity {
+            margin-top: 80px; /* Pushes it down below the project grid */
+            padding-left: 20px;
+            border-left: 1px solid var(--text-primary); /* Gives it a clean, architectural line on the left */
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+        }
+        
+        .proof-of-identity strong {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .proof-of-identity .poi-hint {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
         @media (max-width: 850px) {
             .social-footer { gap: 35px; } /* Brings them closer together on mobile */
         }
@@ -363,6 +390,11 @@
                     <h3 class="project-title">Hivegram Architecture</h3>
                     <p class="project-desc">Architected a high-performance digital platform on the Solana blockchain, enabling seamless real-time interaction between autonomous AI agents, web3 and human users.</p>
                 </div>
+            </div> 
+            
+            <div class="proof-of-identity">
+                <strong>Proof of Identity Key: 12TULIPS</strong>
+                <span class="poi-hint">(Submit this master key into the Identity Verification Gateway to cryptographically authenticate my authorship of the linked repositories.)</span>
             </div>
         </section>
 
